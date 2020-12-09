@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane prefHeight="641.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.moneycalc.gui.deposit.DepositResultOutputController">
+    <children>
+        <TableView fx:id="tableOfDeposit" layoutX="125.0" layoutY="117.0" prefHeight="524.0" prefWidth="907.0"
+                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                   AnchorPane.topAnchor="117.0">
+            <columns>
+                <TableColumn fx:id="numberColumn" maxWidth="78.17688345909119" prefWidth="78.17688345909119" text="№"/>
+                <TableColumn fx:id="dateColumn" maxWidth="136.22671508789062" prefWidth="112.0058364868164"
+                             text="Дата"/>
+                <TableColumn fx:id="interestChargesColumn" maxWidth="235.99412536621094" prefWidth="214.22735595703125"
+                             text="Сумма начисленных процентов"/>
+                <TableColumn fx:id="taxesColumn" maxWidth="224.39981079101562" prefWidth="148.87252807617188"
+                             text="Удержанный налог"/>
+                <TableColumn fx:id="sumIncludingTaxColumn" maxWidth="233.35739135742188" prefWidth="136.062744140625"
+                             text="Сумма"/>
+                <TableColumn fx:id="depositBalanceColumn" maxWidth="212.9373779296875" prefWidth="212.9373779296875"
+                             text="Остаток вклада"/>
+            </columns>
+        </TableView>
+        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMenu"
+                style="-fx-background-color: #f44336#f44336;" text="Назад" textFill="WHITE"/>
+        <AnchorPane layoutY="41.0" prefHeight="71.0" prefWidth="907.0">
+            <children>
+                <Label layoutX="14.0" layoutY="17.0" text="Сумма на конец срока:"/>
+                <Label layoutX="14.0" layoutY="40.0" text="Начисленные проценты:"/>
+                <Label fx:id="totalSumLabel" layoutX="176.0" layoutY="17.0"/>
+                <Label fx:id="totalInterestChargesLabel" layoutX="176.0" layoutY="40.0"/>
+                <Label fx:id="totalTaxesLabel" layoutX="592.0" layoutY="17.0"/>
+                <Label fx:id="totalSumWithTaxesLabel" layoutX="592.0" layoutY="40.0"/>
+                <Label layoutX="419.0" layoutY="17.0" text="Удержанный налог:"/>
+                <Label layoutX="419.0" layoutY="40.0" text="Проценты с учетом налога:"/>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
