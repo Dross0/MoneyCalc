@@ -20,6 +20,7 @@ public class DepositCSVFormatter {
             "Остаток вклада"
     );
 
+    @NotNull
     private final String delimiter;
 
     public DepositCSVFormatter(@NotNull String delimiter) {

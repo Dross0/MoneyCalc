@@ -77,7 +77,7 @@ public class AnnuityCredit implements Credit {
 
     @Override
     public double getTotalPayout() {
-        return creditInfo.getMonths() * getMonthlyPayment(1);
+        return creditInfo.getMonths() * monthlyPayment;
     }
 
     @Override

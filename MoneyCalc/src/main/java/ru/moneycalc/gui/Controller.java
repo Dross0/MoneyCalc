@@ -13,7 +13,7 @@ import ru.moneycalc.gui.deposit.DepositResultOutputController;
 
 import java.io.IOException;
 
-public class Controller {
+public class Controller implements SceneChanging {
     private static final Logger logger = LoggerFactory.getLogger(Controller.class);
     private SceneChanger sceneChanger;
 
@@ -46,6 +46,7 @@ public class Controller {
         }
     }
 
+    @Override
     public void setSceneChanger(@NotNull SceneChanger sceneChanger) {
         this.sceneChanger = sceneChanger;
     }

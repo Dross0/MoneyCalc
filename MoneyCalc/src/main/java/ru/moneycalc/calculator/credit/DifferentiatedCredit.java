@@ -29,7 +29,7 @@ public class DifferentiatedCredit implements Credit {
         for (int monthIndex = 1; monthIndex <= this.creditInfo.getMonths(); ++monthIndex) {
             Calendar date = (Calendar) this.creditInfo.getLoanDate().clone();
             date.add(Calendar.MONTH, monthIndex);
-            listOfPayments.add(new CreditPayment(getMonthlyPayment(monthIndex),
+            listOfPayments.add(new CreditPayment(countMonthlyPayment(monthIndex),
                     getMonthlyPrincipalPayout(monthIndex),
                     getMonthlyPercentPayout(monthIndex),
                     getMonthlyCreditBalance(monthIndex),
@@ -63,6 +63,13 @@ public class DifferentiatedCredit implements Credit {
 
     @Override
     public double getMonthlyPayment(int monthNumber) {
+        if (listOfPayments.size() < creditInfo.getMonths()) {
+            return countMonthlyPayment(monthNumber);
+        }
+        return listOfPayments.get(monthNumber - 1).getPaymentSum();
+    }
+
+    private double countMonthlyPayment(int monthNumber) {
         double base = creditInfo.getSumOfCredit() / creditInfo.getMonths();
         return base + (creditInfo.getSumOfCredit() - (base * (monthNumber - 1))) * (creditInfo.getPercent() / 12);
     }
@@ -70,9 +77,7 @@ public class DifferentiatedCredit implements Credit {
     @Override
     public double getTotalPayout() {
         if (totalPayout == 0) {
-            for (int month = 1; month <= creditInfo.getMonths(); ++month) {
-                totalPayout += getMonthlyPayment(month);
-            }
+            listOfPayments.forEach(payment -> totalPayout += payment.getPaymentSum());
         }
         return totalPayout;
     }
@@ -96,6 +101,5 @@ public class DifferentiatedCredit implements Credit {
     public double getTotalPercentPayout() {
         return getTotalPayout() - creditInfo.getSumOfCredit();
     }
-
 
 }

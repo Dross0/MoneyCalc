@@ -21,6 +21,7 @@ public class CreditCSVFormatter {
             "Остаток"
     );
 
+    @NotNull
     private final String delimiter;
 
     public CreditCSVFormatter(@NotNull String delimiter) {
